@@ -138,6 +138,13 @@ public class PracticalTest01Var04MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent serviceIntent = new Intent(getApplicationContext(), PracticalTest01Var04Service.class);
+        getApplicationContext().stopService(serviceIntent);
+    }
+
+    @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(Constants.studentGroup, groupText.getText().toString());
